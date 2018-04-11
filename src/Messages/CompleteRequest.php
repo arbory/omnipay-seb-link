@@ -26,9 +26,10 @@ class CompleteRequest extends AbstractRequest
         'IB_PAYMENT_DESC' => true,
         'IB_PAYMENT_DATE' => true,
         'IB_PAYMENT_TIME' => true,
+        'IB_FROM_SERVER' => true,
+        'IB_STATUS' => true,
         'IB_CRC' => false,
         'IB_LANG' => false,
-        'IB_FROM_SERVER' => false
     ];
 
     /**
@@ -75,8 +76,17 @@ class CompleteRequest extends AbstractRequest
     public function validate()
     {
         $response = $this->getData();
+
         if (!isset($response['IB_SERVICE']) || !in_array($response['IB_SERVICE'], ['0003', '0004'])) {
             throw new InvalidRequestException('Unknown IB_SERVICE code');
+        }
+
+        if (!isset($response['IB_SND_ID']) || $response['IB_SND_ID'] !== 'SEBUB') {
+            throw new InvalidRequestException('Invalid Bank ID');
+        }
+
+        if (!isset($response['IB_REC_ID']) || $response['IB_REC_ID'] !== $this->getMerchantId()) {
+            throw new InvalidRequestException('Invalid Merchant ID');
         }
 
         //verify data corruption
