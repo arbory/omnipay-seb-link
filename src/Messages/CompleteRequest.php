@@ -76,6 +76,7 @@ class CompleteRequest extends AbstractRequest
     public function validate()
     {
         $response = $this->getData();
+        $keys = $this->responseKeys;
 
         if (!isset($response['IB_SERVICE']) || !in_array($response['IB_SERVICE'], ['0003', '0004'])) {
             throw new InvalidRequestException('Unknown IB_SERVICE code');
@@ -89,8 +90,13 @@ class CompleteRequest extends AbstractRequest
             throw new InvalidRequestException('Invalid Merchant ID');
         }
 
+        if ($response['IB_SERVICE'] === '0003') {
+            $keys['IB_FROM_SERVER'] = false;
+            $keys['IB_STATUS'] = false;
+        }
+
         //verify data corruption
-        $this->validateIntegrity($this->responseKeys);
+        $this->validateIntegrity($keys);
     }
 
     /**
