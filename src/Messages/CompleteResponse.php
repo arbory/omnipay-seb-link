@@ -9,10 +9,10 @@ class CompleteResponse extends AbstractResponse
      */
     public function isSuccessful()
     {
-        if ($this->data['IB_STATUS'] == 'ACCOMPLISHED') {
-            return true;
+        if (empty($this->data['IB_STATUS'])) {
+            return false;
         }
-        return false;
+        return $this->data['IB_STATUS'] == 'ACCOMPLISHED';
     }
 
     /**
@@ -22,6 +22,9 @@ class CompleteResponse extends AbstractResponse
      */
     public function isCancelled()
     {
+        if (empty($this->data['IB_STATUS'])) {
+            return false;
+        }
         return $this->data['IB_STATUS'] == 'CANCELLED';
     }
 
@@ -30,7 +33,7 @@ class CompleteResponse extends AbstractResponse
      */
     public function getMessage()
     {
-        if ($this->data['IB_STATUS'] == 'CANCELLED') {
+        if (!empty($this->data['IB_STATUS']) && $this->data['IB_STATUS'] == 'CANCELLED') {
             return 'Paymant canceled by user';
         }
         return 'Unknown gateways error';
