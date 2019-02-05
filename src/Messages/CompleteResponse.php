@@ -9,10 +9,11 @@ class CompleteResponse extends AbstractResponse
      */
     public function isSuccessful()
     {
-        if (empty($this->data['IB_STATUS'])) {
-            return false;
+        if ($this->getService() == '0003' && $this->isFromServer()) {
+            return true;
         }
-        return $this->data['IB_STATUS'] == 'ACCOMPLISHED';
+
+        return $this->getStatus() == 'ACCOMPLISHED';
     }
 
     /**
@@ -22,10 +23,43 @@ class CompleteResponse extends AbstractResponse
      */
     public function isCancelled()
     {
-        if (empty($this->data['IB_STATUS'])) {
-            return false;
+        return $this->getStatus() == 'CANCELLED';
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getStatus()
+    {
+        if (isset($this->data['IB_STATUS'])) {
+            return $this->data['IB_STATUS'];
         }
-        return $this->data['IB_STATUS'] == 'CANCELLED';
+
+        return null;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isFromServer()
+    {
+        if (isset($this->data['IB_FROM_SERVER'])) {
+            return $this->data['IB_FROM_SERVER'] == 'Y';
+        }
+
+        return false;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getService()
+    {
+        if (isset($this->data['IB_SERVICE'])) {
+            return $this->data['IB_SERVICE'];
+        }
+
+        return null;
     }
 
     /**
@@ -33,9 +67,10 @@ class CompleteResponse extends AbstractResponse
      */
     public function getMessage()
     {
-        if (!empty($this->data['IB_STATUS']) && $this->data['IB_STATUS'] == 'CANCELLED') {
-            return 'Paymant canceled by user';
+        if ($this->isCancelled()) {
+            return 'Payment cancelled by user';
         }
-        return 'Unknown gateways error';
+
+        return 'Unknown gateway error';
     }
 }
