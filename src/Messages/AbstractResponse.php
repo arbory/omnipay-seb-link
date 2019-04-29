@@ -11,7 +11,6 @@ abstract class AbstractResponse extends CommonAbstractResponse
      */
     public function getTransactionReference()
     {
-        $data = $this->getData();
-        return $data['IB_PAYMENT_ID'] ?? $data['IB_PAYMENT_ID'];
+        return $this->data['IB_PAYMENT_ID'] ?? $this->data['IB_PAYMENT_ID'];
     }
 }

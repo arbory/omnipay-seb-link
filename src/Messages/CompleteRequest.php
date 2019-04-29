@@ -8,6 +8,8 @@ use Symfony\Component\HttpFoundation\ParameterBag;
 
 class CompleteRequest extends AbstractRequest
 {
+    protected const ENCODING_UTF_8 = 'UTF-8';
+
     /**
      * @var array
      */
@@ -39,9 +41,9 @@ class CompleteRequest extends AbstractRequest
     {
         if ($this->httpRequest->getMethod() == 'POST') {
             return $this->httpRequest->request->all();
-        } else {
-            return $this->httpRequest->query->all();
         }
+
+        return $this->httpRequest->query->all();
     }
 
     /**
@@ -51,7 +53,7 @@ class CompleteRequest extends AbstractRequest
     public function createResponse(array $data)
     {
         // Read data from request object
-        return $purchaseResponseObj = new CompleteResponse($this, $data);
+        return new CompleteResponse($this, $data);
     }
 
     /**
@@ -66,8 +68,7 @@ class CompleteRequest extends AbstractRequest
 
         // Create fake response flow
         /** @var CompleteResponse $purchaseResponseObj */
-        $response = $this->createResponse($data);
-        return $response;
+        return $this->createResponse($data);
     }
 
     /**
@@ -119,7 +120,7 @@ class CompleteRequest extends AbstractRequest
             $controlCodeFields,
             $responseData->get('IB_CRC'),
             $this->getPublicCertificatePath(),
-            'UTF-8'
+            self::ENCODING_UTF_8
         )) {
             throw new InvalidRequestException('Data is corrupt or has been changed by a third party');
         }

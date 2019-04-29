@@ -127,10 +127,11 @@ class GatewayTest extends GatewayTestCase
 
         $this->assertFalse($response->isPending());
         $this->assertTrue($response->isSuccessful());
+        $this->assertTrue($response->isServerToServerRequest());
         $this->assertFalse($response->isRedirect());
         $this->assertFalse($response->isCancelled());
         $this->assertSame('UB0000000000015', $response->getTransactionReference());
-        $this->assertSame('', $response->getMessage());
+        $this->assertSame('Payment was successful', $response->getMessage());
     }
 
     public function testPurchaseCompleteSuccessWithGET()
@@ -161,10 +162,39 @@ class GatewayTest extends GatewayTestCase
 
         $this->assertFalse($response->isPending());
         $this->assertTrue($response->isSuccessful());
+        $this->assertTrue($response->isServerToServerRequest());
         $this->assertFalse($response->isRedirect());
         $this->assertFalse($response->isCancelled());
         $this->assertSame('UB0000000000015', $response->getTransactionReference());
-        $this->assertSame('', $response->getMessage());
+        $this->assertSame('Payment was successful', $response->getMessage());
+    }
+
+    public function testPurchaseCompleteWithOrderStatusRequest()
+    {
+        $postData = array(
+            'IB_SND_ID' => 'SEBUB',
+            'IB_SERVICE' => '0004',
+            'IB_VERSION' => '001',
+            'IB_REC_ID' => 'MERCHANT1',
+            'IB_PAYMENT_ID' => 'UB0000000000015',
+            'IB_PAYMENT_DESC' => 'Payment for order 1231223',
+            'IB_FROM_SERVER' => 'Y',
+            'IB_STATUS' => 'ACCOMPLISHED',
+            'IB_CRC' => 'Y4KDEHvrLffVAjSD919dM0ghYgVUje8B3VBBvwcUTi+emc3VcGDG3KcH+OkSsbEcBZ2Zl8jsCBdHinu8tMicx7qRS9imP6DWruh/BLAfpEaeWks1zJDslVjfiaJ3nFI232YN9+pqe1a2c63oJZ3H2vIJlXpHSor7CpNvJBzIn6By02OjuWFAaaXLnNG0CsCN1SnNJRF4vi/aBZ6sWaHp5UevCxRpvELLTTNnJiFy3AleO9ZezkRzAA9BvuphDzYH62QaRRmE6OUvLY8c+1LeGi/fHksberoXYBPkOenGSKPG9Ee40hr8KqOdB7i+O7vL8//P3tS8DoryEF6AW5h1ew==',
+            'IB_LANG' => 'LAT',
+        );
+
+        $this->getHttpRequest()->query->replace($postData);
+
+        $response = $this->gateway->completePurchase($this->options)->send();
+
+        $this->assertFalse($response->isPending());
+        $this->assertTrue($response->isSuccessful());
+        $this->assertTrue($response->isServerToServerRequest());
+        $this->assertFalse($response->isRedirect());
+        $this->assertFalse($response->isCancelled());
+        $this->assertSame('UB0000000000015', $response->getTransactionReference());
+        $this->assertSame('Payment was successful', $response->getMessage());
     }
 
     public function testPurchaseCompleteFailed()
@@ -176,9 +206,9 @@ class GatewayTest extends GatewayTestCase
             'IB_REC_ID' => 'MERCHANT1',
             'IB_PAYMENT_ID' => 'UB0000000000015',
             'IB_PAYMENT_DESC' => 'Payment for order 1231223',
-            'IB_FROM_SERVER' => 'Y',
+            'IB_FROM_SERVER' => 'N',
             'IB_STATUS' => 'CANCELLED',
-            'IB_CRC' => 'RJOsoKvgIuXy4mcB26Bkap0JTmViXdPt9QtB2/QpVWG59Iy7unFP5YXlhUCV32P9IHALpvdBFSGMknJGFs+mJOzuhm0Xh50OAeSWc79/x6feaVzWkIVtXm+mUFyDz4g3SYWhUBbV7tLNxsirC3W06dZzAsSVWlPFZXCBIWhv5PXmT6cjr3VU8FUuftpYtwgcIgRsrAnyG3TfR79wL8AEb8O4u+rvWmNc938B2UtUjtiocflpFjI/GmLTVIsnt7ecRPxdrAr9tazk+dXv0vtRd5UnZ0o0UZj1cJ50ooHrRbHAxldK62DAB4sdu1QDomqgrPkFjy//fyx8uLIQjbWfAw==',
+            'IB_CRC' => 'AH9d+xttxCVKlg5+JOUXeR1ZbZkVmhwwoKoCZm+Lv3AvmB/4U12124bd9b5sf7iDn7e/L7COhFNMTEvzi0V6z9j71IuiKsSXHZOpwL1B8caL/Ozpbse8xXBF+958j7vVTS2vgqfWl4peh11j8lRoK2ug3PCO1Mn10SerOJG6xN0tFuqsQ7PIOoOeZw2NL/zj0zdWlK6RGKtyZbypTcX1dYdCKsm3b4+3vYbd5+7AtWyd0HHYw5kG5b/Dqt3+pzoutwkFTrhN03R8IzIR7xxP1hBaK7xihCrHJ4Lv1x2HFCY9etlZQDmkLwK77nZ+MstnBh32ITED5CyRQb6RTTA8OQ==',
             'IB_LANG' => 'LAT',
         );
 
@@ -188,10 +218,11 @@ class GatewayTest extends GatewayTestCase
 
         $this->assertFalse($response->isPending());
         $this->assertFalse($response->isSuccessful());
+        $this->assertFalse($response->isServerToServerRequest());
         $this->assertFalse($response->isRedirect());
         $this->assertTrue($response->isCancelled());
         $this->assertSame('UB0000000000015', $response->getTransactionReference());
-        $this->assertSame('Payment cancelled by user', $response->getMessage());
+        $this->assertSame('Payment canceled by user', $response->getMessage());
     }
 
     public function testPurchaseCompleteFailedWithForgedSignature()

@@ -4,16 +4,22 @@ namespace Omnipay\SebLink\Messages;
 
 class CompleteResponse extends AbstractResponse
 {
+    protected const STATUS_ACCOMPLISHED = 'ACCOMPLISHED';
+    protected const STATUS_KEY = 'IB_STATUS';
+    protected const STATUS_CANCELLED = 'CANCELLED';
+
     /**
      * @return bool
      */
-    public function isSuccessful()
+    public function isSuccessful(): bool
     {
-        if ($this->getService() == '0003' && $this->isFromServer()) {
+        if ($this->getService() == '0003') {
+            return true;
+        } elseif ($this->getService() == '0004' && $this->data[self::STATUS_KEY] === self::STATUS_ACCOMPLISHED) {
             return true;
         }
 
-        return $this->getStatus() == 'ACCOMPLISHED';
+        return false;
     }
 
     /**
@@ -21,25 +27,13 @@ class CompleteResponse extends AbstractResponse
      *
      * @return bool
      */
-    public function isCancelled()
+    public function isCancelled(): bool
     {
-        return $this->getStatus() == 'CANCELLED';
-    }
+        if (empty($this->data[self::STATUS_KEY])) {
+            return false;
+        }
 
-    /**
-     * @return string|null
-     */
-    public function getStatus()
-    {
-        return $this->data['IB_STATUS'] ?? null;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isFromServer()
-    {
-        return ($this->data['IB_FROM_SERVER'] ?? null) == 'Y';
+        return $this->data[self::STATUS_KEY] === self::STATUS_CANCELLED;
     }
 
     /**
@@ -53,12 +47,20 @@ class CompleteResponse extends AbstractResponse
     /**
      * @return string
      */
-    public function getMessage()
+    public function getMessage(): string
     {
         if ($this->isCancelled()) {
-            return 'Payment cancelled by user';
+            return 'Payment canceled by user';
         }
 
-        return '';
+        return 'Payment was successful';
+    }
+
+    /**
+     * @return bool
+     */
+    public function isServerToServerRequest(): bool
+    {
+        return ($this->data['IB_FROM_SERVER'] ?? null) == 'Y';
     }
 }
