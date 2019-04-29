@@ -33,7 +33,7 @@ class Gateway extends AbstractGateway
             'merchantName' => '',
             'returnUrl' => '',
             'privateCertificatePath' => '',
-            'privateCertificatePassword' => null,
+            'privateCertificatePassphrase' => null,
             'publicCertificatePath' => '',
 
             //Global parameters for requests will be set via gateway
@@ -67,7 +67,7 @@ class Gateway extends AbstractGateway
      */
     public function setGatewayUrl($value)
     {
-        $this->setParameter('gatewayUrl', $value);
+        return $this->setParameter('gatewayUrl', $value);
     }
 
     /**
@@ -83,7 +83,7 @@ class Gateway extends AbstractGateway
      */
     public function setMerchantId($value)
     {
-        $this->setParameter('merchantId', $value);
+        return $this->setParameter('merchantId', $value);
     }
 
     /**
@@ -99,7 +99,7 @@ class Gateway extends AbstractGateway
      */
     public function setMerchantName($value)
     {
-        $this->setParameter('merchantName', $value);
+        return $this->setParameter('merchantName', $value);
     }
 
     /**
@@ -113,9 +113,25 @@ class Gateway extends AbstractGateway
     /**
      * @param string $value
      */
+    public function setMerchantBankAccount($value)
+    {
+        return $this->setParameter('merchantBankAccount', $value);
+    }
+
+    /**
+     * @return string
+     */
+    public function getMerchantBankAccount()
+    {
+        return $this->getParameter('merchantBankAccount');
+    }
+
+    /**
+     * @param string $value
+     */
     public function setReturnUrl($value)
     {
-        $this->setParameter('returnUrl', $value);
+        return $this->setParameter('returnUrl', $value);
     }
 
     /**
@@ -131,7 +147,7 @@ class Gateway extends AbstractGateway
      */
     public function setPrivateCertificatePath($value)
     {
-        $this->setParameter('privateCertificatePath', $value);
+        return $this->setParameter('privateCertificatePath', $value);
     }
 
     /**
@@ -144,18 +160,19 @@ class Gateway extends AbstractGateway
 
     /**
      * @param string $value
+     * @return $this
      */
-    public function setPrivateCertificatePassword($value)
+    public function setPrivateCertificatePassphrase($value)
     {
-        $this->setParameter('privateCertificatePassword', $value);
+        return $this->setParameter('privateCertificatePassphrase', $value);
     }
 
     /**
      * @return string
      */
-    public function getPrivateCertificatePassword()
+    public function getPrivateCertificatePassphrase()
     {
-        return $this->getParameter('privateCertificatePassword');
+        return $this->getParameter('privateCertificatePassphrase');
     }
 
     /**
@@ -163,7 +180,7 @@ class Gateway extends AbstractGateway
      */
     public function setPublicCertificatePath($value)
     {
-        $this->setParameter('publicCertificatePath', $value);
+        return $this->setParameter('publicCertificatePath', $value);
     }
 
     /**
@@ -179,7 +196,7 @@ class Gateway extends AbstractGateway
      */
     public function setLanguage($value)
     {
-        $this->setParameter('language', $value);
+        return $this->setParameter('language', $value);
     }
 
     /**

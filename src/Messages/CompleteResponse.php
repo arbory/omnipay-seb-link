@@ -71,6 +71,6 @@ class CompleteResponse extends AbstractResponse
             return 'Payment cancelled by user';
         }
 
-        return 'Unknown gateway error';
+        return '';
     }
 }

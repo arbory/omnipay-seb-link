@@ -47,7 +47,12 @@ class PurchaseRequest extends AbstractRequest
      */
     private function generateControlCode($data)
     {
-        return Pizza::generateControlCode($data, 'UTF-8', $this->getPrivateCertificatePath(), $this->getPrivateCertificatePassword());
+        return Pizza::generateControlCode(
+            $data,
+            'UTF-8',
+            $this->getPrivateCertificatePath(),
+            $this->getPrivateCertificatePassphrase()
+        );
     }
 
     /**

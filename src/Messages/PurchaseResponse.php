@@ -59,5 +59,4 @@ class PurchaseResponse extends AbstractResponse implements RedirectResponseInter
         $request = $this->getRequest();
         return $request->getGatewayUrl();
     }
-
 }
