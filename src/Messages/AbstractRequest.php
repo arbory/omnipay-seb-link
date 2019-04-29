@@ -8,18 +8,19 @@ abstract class AbstractRequest extends CommonAbstractRequest
 {
     /**
      * @param string $value
+     * @return $this
      */
-    public function setPrivateCertificatePassword($value)
+    public function setPrivateCertificatePassphrase($value)
     {
-        $this->setParameter('privateCertificatePassword', $value);
+        return $this->setParameter('privateCertificatePassphrase', $value);
     }
 
     /**
      * @return string
      */
-    public function getPrivateCertificatePassword()
+    public function getPrivateCertificatePassphrase()
     {
-        return $this->getParameter('privateCertificatePassword');
+        return $this->getParameter('privateCertificatePassphrase');
     }
 
     /**
@@ -35,7 +36,7 @@ abstract class AbstractRequest extends CommonAbstractRequest
      */
     public function setReturnUrl($value)
     {
-        $this->setParameter('returnUrl', $value);
+        return $this->setParameter('returnUrl', $value);
     }
 
     /**
@@ -43,7 +44,7 @@ abstract class AbstractRequest extends CommonAbstractRequest
      */
     public function setPrivateCertificatePath($value)
     {
-        $this->setParameter('privateCertificatePath', $value);
+        return $this->setParameter('privateCertificatePath', $value);
     }
 
     /**
@@ -59,7 +60,7 @@ abstract class AbstractRequest extends CommonAbstractRequest
      */
     public function setPublicCertificatePath($value)
     {
-        $this->setParameter('publicCertificatePath', $value);
+        return $this->setParameter('publicCertificatePath', $value);
     }
 
     /**
@@ -83,7 +84,7 @@ abstract class AbstractRequest extends CommonAbstractRequest
      */
     public function setLanguage($value)
     {
-        $this->setParameter('language', $value);
+        return $this->setParameter('language', $value);
     }
 
     /**
@@ -91,7 +92,7 @@ abstract class AbstractRequest extends CommonAbstractRequest
      */
     public function setGatewayUrl($value)
     {
-        $this->setParameter('gatewayUrl', $value);
+        return $this->setParameter('gatewayUrl', $value);
     }
 
     /**
@@ -107,7 +108,7 @@ abstract class AbstractRequest extends CommonAbstractRequest
      */
     public function setMerchantId($value)
     {
-        $this->setParameter('merchantId', $value);
+        return $this->setParameter('merchantId', $value);
     }
 
     /**
@@ -123,7 +124,7 @@ abstract class AbstractRequest extends CommonAbstractRequest
      */
     public function setMerchantName($value)
     {
-        $this->setParameter('merchantName', $value);
+        return $this->setParameter('merchantName', $value);
     }
 
     /**
@@ -132,5 +133,21 @@ abstract class AbstractRequest extends CommonAbstractRequest
     public function getMerchantName()
     {
         return $this->getParameter('merchantName');
+    }
+
+    /**
+     * @param string $value
+     */
+    public function setMerchantBankAccount($value)
+    {
+        return $this->setParameter('merchantBankAccount', $value);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMerchantBankAccount()
+    {
+        return $this->getParameter('merchantBankAccount');
     }
 }

@@ -18,7 +18,7 @@ class Pizza
      * @param null $passPhrase
      * @return string
      */
-    public static function generateControlCode(array $data, $encoding, $privateCertPath, $passPhrase = null)
+    public static function generateControlCode(array $data, $encoding, $privateCertPath, $passPhrase)
     {
         $hash = self::createHash($data, $encoding);
 
@@ -70,28 +70,6 @@ class Pizza
 
         openssl_free_key($publicKey);
 
-        if ($result !== 1 && $result !== 0) {
-            // OpenSSL error, problem with pem certificate
-            throw new \RuntimeException('Verification error :' . openssl_error_string());
-        }
-
         return boolval($result);
     }
-
-    /**
-     * Test encoding/decoding by comparing results, this will allow also help debugging certificate file problems
-     *
-     * @param array $data
-     * @param $privateCertPath
-     * @param $encoding
-     * @param null $passPhrase
-     * @return bool
-     */
-    public static function test(array $data, $privateCertPath, $encoding, $passPhrase = null)
-    {
-        $cCode = self::generateControlCode($data, $encoding, $privateCertPath, $passPhrase);
-        $result = self::isValidControlCode($data, $cCode, $privateCertPath, $encoding);
-        return $result;
-    }
-
 }
