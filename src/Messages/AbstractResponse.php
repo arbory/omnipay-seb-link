@@ -7,14 +7,6 @@ use Omnipay\Common\Message\AbstractResponse as CommonAbstractResponse;
 abstract class AbstractResponse extends CommonAbstractResponse
 {
     /**
-     * @return string
-     */
-    public function getMessage()
-    {
-        return null;
-    }
-
-    /**
      * @return null|string
      */
     public function getTransactionReference()

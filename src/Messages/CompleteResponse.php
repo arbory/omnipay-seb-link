@@ -31,11 +31,7 @@ class CompleteResponse extends AbstractResponse
      */
     public function getStatus()
     {
-        if (isset($this->data['IB_STATUS'])) {
-            return $this->data['IB_STATUS'];
-        }
-
-        return null;
+        return $this->data['IB_STATUS'] ?? null;
     }
 
     /**
@@ -43,11 +39,7 @@ class CompleteResponse extends AbstractResponse
      */
     public function isFromServer()
     {
-        if (isset($this->data['IB_FROM_SERVER'])) {
-            return $this->data['IB_FROM_SERVER'] == 'Y';
-        }
-
-        return false;
+        return ($this->data['IB_FROM_SERVER'] ?? null) == 'Y';
     }
 
     /**
@@ -55,11 +47,7 @@ class CompleteResponse extends AbstractResponse
      */
     public function getService()
     {
-        if (isset($this->data['IB_SERVICE'])) {
-            return $this->data['IB_SERVICE'];
-        }
-
-        return null;
+        return $this->data['IB_SERVICE'] ?? null;
     }
 
     /**

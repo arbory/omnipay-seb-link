@@ -212,6 +212,7 @@ class GatewayTest extends GatewayTestCase
         $this->getHttpRequest()->query->replace($postData);
 
         $this->expectException(\Omnipay\Common\Exception\InvalidRequestException::class);
+        $this->expectExceptionMessage("Data is corrupt or has been changed by a third party");
 
         $response = $this->gateway->completePurchase($this->options)->send();
     }
@@ -225,6 +226,7 @@ class GatewayTest extends GatewayTestCase
         $this->getHttpRequest()->query->replace($postData);
 
         $this->expectException(\Omnipay\Common\Exception\InvalidRequestException::class);
+        $this->expectExceptionMessage("Unknown IB_SERVICE code");
 
         $response = $this->gateway->completePurchase($this->options)->send();
     }
@@ -254,6 +256,7 @@ class GatewayTest extends GatewayTestCase
         $this->getHttpRequest()->query->replace($postData);
 
         $this->expectException(\Omnipay\Common\Exception\InvalidRequestException::class);
+        $this->expectExceptionMessage("Unknown IB_SERVICE code");
 
         $response = $this->gateway->completePurchase($this->options)->send();
     }
