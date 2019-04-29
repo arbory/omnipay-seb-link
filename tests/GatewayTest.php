@@ -7,7 +7,7 @@ use Omnipay\Tests\GatewayTestCase;
 class GatewayTest extends GatewayTestCase
 {
     /**
-     * @var \Omnipay\SwedbankBanklink\Gateway
+     * @var \Omnipay\SebLink\Gateway
      */
     protected $gateway;
 
