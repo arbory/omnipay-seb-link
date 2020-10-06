@@ -64,7 +64,7 @@ class CompleteRequest extends AbstractRequest
     public function sendData($data)
     {
         //Validate response data before we process further
-        $this->validate();
+        $this->validateResponseParameters();
 
         // Create fake response flow
         /** @var CompleteResponse $purchaseResponseObj */
@@ -74,7 +74,7 @@ class CompleteRequest extends AbstractRequest
     /**
      * @throws InvalidRequestException
      */
-    public function validate()
+    protected function validateResponseParameters()
     {
         $response = $this->getData();
         $keys = $this->responseKeys;
