@@ -25,7 +25,7 @@ class CompleteRequestTest extends TestCase
         $this->expectException(\Omnipay\Common\Exception\InvalidRequestException::class);
         $this->expectExceptionMessage("Unknown IB_SERVICE code");
 
-        $this->complete_request->validate();
+        $this->complete_request->validateResponseParameters();
     }
 
     public function testValidateWithInvalidIBSERVICE()
@@ -35,7 +35,7 @@ class CompleteRequestTest extends TestCase
         $this->expectException(\Omnipay\Common\Exception\InvalidRequestException::class);
         $this->expectExceptionMessage("Unknown IB_SERVICE code");
 
-        $this->complete_request->validate();
+        $this->complete_request->validateResponseParameters();
     }
 
     public function testValidateWithUnexistingIBSNDID()
@@ -45,7 +45,7 @@ class CompleteRequestTest extends TestCase
         $this->expectException(\Omnipay\Common\Exception\InvalidRequestException::class);
         $this->expectExceptionMessage("Invalid Bank ID");
 
-        $this->complete_request->validate();
+        $this->complete_request->validateResponseParameters();
     }
 
     public function testValidateWithInvalidIBSNDID()
@@ -56,7 +56,7 @@ class CompleteRequestTest extends TestCase
         $this->expectException(\Omnipay\Common\Exception\InvalidRequestException::class);
         $this->expectExceptionMessage("Invalid Bank ID");
 
-        $this->complete_request->validate();
+        $this->complete_request->validateResponseParameters();
     }
 
     public function testValidateWithUnexistingIBRECID()
@@ -67,7 +67,7 @@ class CompleteRequestTest extends TestCase
         $this->expectException(\Omnipay\Common\Exception\InvalidRequestException::class);
         $this->expectExceptionMessage("Invalid Merchant ID");
 
-        $this->complete_request->validate();
+        $this->complete_request->validateResponseParameters();
     }
 
     public function testValidateWithInvalidIBRECID()
@@ -79,7 +79,7 @@ class CompleteRequestTest extends TestCase
         $this->expectException(\Omnipay\Common\Exception\InvalidRequestException::class);
         $this->expectExceptionMessage("Invalid Merchant ID");
 
-        $this->complete_request->validate();
+        $this->complete_request->validateResponseParameters();
     }
 
     public function testValidateWithValidIBRECID()
@@ -93,6 +93,6 @@ class CompleteRequestTest extends TestCase
 
         $this->expectException(\Omnipay\Common\Exception\InvalidRequestException::class);
         $this->expectExceptionMessage("Data is corrupt or has been changed by a third party");
-        $this->complete_request->validate();
+        $this->complete_request->validateResponseParameters();
     }
 }

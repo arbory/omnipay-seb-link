@@ -74,7 +74,7 @@ class CompleteRequest extends AbstractRequest
     /**
      * @throws InvalidRequestException
      */
-    protected function validateResponseParameters()
+    public function validateResponseParameters()
     {
         $response = $this->getData();
         $keys = $this->responseKeys;
