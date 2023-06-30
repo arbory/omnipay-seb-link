@@ -12,6 +12,7 @@
         "psr-4": { "Omnipay\\SebLink\\" : "src/" }
     },
     "require": {
+      "ext-openssl": "*",
       "omnipay/common": "~3.0"
     },
     "require-dev": {

@@ -24,7 +24,7 @@ class Pizza
 
         $certContent = file_get_contents($privateCertPath);
         $privateKey = openssl_get_privatekey($certContent, $passPhrase);
-        openssl_sign($hash, $controlCode, $privateKey);
+        openssl_sign($hash, $controlCode, $privateKey, OPENSSL_ALGO_SHA512);
         openssl_free_key($privateKey);
 
         return base64_encode($controlCode);
@@ -66,7 +66,7 @@ class Pizza
             throw new \RuntimeException('Certificate error :' . openssl_error_string());
         }
 
-        $result = openssl_verify($hash, $signature, $publicKey);
+        $result = openssl_verify($hash, $signature, $publicKey, OPENSSL_ALGO_SHA512);
 
         openssl_free_key($publicKey);
 
