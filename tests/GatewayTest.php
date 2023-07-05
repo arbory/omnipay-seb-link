@@ -51,13 +51,13 @@ class GatewayTest extends GatewayTestCase
         $this->assertEquals(array(
             'IB_SND_ID' => 'MERCHANT1',
             'IB_SERVICE' => '0002',
-            'IB_VERSION' => '001',
+            'IB_VERSION' => '002',
             'IB_AMOUNT' => '10.00',
             'IB_CURR' => 'EUR',
             'IB_NAME' => 'some merchant',
             'IB_PAYMENT_ID' => 'abc123',
             'IB_PAYMENT_DESC' => 'purchase description',
-            'IB_CRC' => 's+oX9U0cMu53QldGpZw43qfagFpoEx69ZxDMrfw7slRAupvwuJC15EmUN6qYdbJywMsRuCqHnjYLz7QSuLUtrv84AV/Q7vfpnpcbz9QldwGcC8HtEhT40QsmcICdiabyHBtWnsbnlwQcpNBOen/cfutRVPx+lRVJZDArm4gd0owUdmjHkw7l91CWj5p/XALBQvOb27MLV4P2W/3gxZxCZMQbsYSP7YMFou3FX5FiaxONRESeJWUNVBk/pT1FhylzgMBwW1R06n5fOUF2KDFI0QnaQrEFLM6BJ/oKSZshUd8HDq+UMEhYrbQzXtJQ0AzApzLpuT3ui+lVDuzoZKQkbw==',
+            'IB_CRC' => 'jEWWWlkq8j6RI8bwpFjmEKwuIHD/lU0WuHBFqxk+iInXDq5IS9WSBYlXf+taUwo8/aenxe/Qqci4RfMhTeFn5+P+fX3IZnXlNKqdyoJVYEZphneWSit8QhToxLrpyvrevzq6NuRRq8znpd7wVmjeuw7Koy1cUwsPcI0OBeYKWHva8Nw76/rlW9OUexZYwwYzXoGwRkJFHF74XUXL4bgQV00/AVuwbOj0KA9Ia6kKl5jjT71JTeHOYD2F1DsRQ6oXMvMVsQdT7SB+SDllaMaJwG9ewDeY/B6Fip91LkjlV07iTOV4N0aC0ZDJdD0iO+e8ilEaD7JfV2VZP/rgQZh+nQ==',
             'IB_FEEDBACK' => 'http://localhost:8080/omnipay/banklink/',
             'IB_LANG' => 'LAT'
         ), $response->getData());
@@ -84,13 +84,13 @@ class GatewayTest extends GatewayTestCase
         $this->assertEquals(array(
             'IB_SND_ID' => 'MERCHANT1',
             'IB_SERVICE' => '0002',
-            'IB_VERSION' => '001',
+            'IB_VERSION' => '002',
             'IB_AMOUNT' => '10.00',
             'IB_CURR' => 'EUR',
             'IB_NAME' => 'some merchant',
             'IB_PAYMENT_ID' => 'abc123',
             'IB_PAYMENT_DESC' => 'purchase description',
-            'IB_CRC' => 'OAFJCSE0y3QWXYrWsi1/XbtmNT7MGlm2c+5LFdBXlwHWnMelNJFYdqq7Wc45Z8WwGht7y3GrTqhM0zWycMwhz5oC7OrdSKsBKyOYq6Znvn+sUubCV7tIr5B0trekWEvlATGFX5cTxP/GNCEyAIiQyBVv6G5pz37a0BHQ0vedqK9nz7MNGmHFF7+X7Itv5G+jCtMUYN1gLh/fBZ/osSAKJKEjF5TvpvVIaZBo4I2nAF9fVULubPjCpnUZVbQzVRcApwcfWFzMwZroVJwFVr1ENiNc2jUdbPnM+FKqVjil1Dmp3cXizyFCZ3VlMiyMYtYzb3BFJLz2oCsR13mUA8zFiw==',
+            'IB_CRC' => 'k5NqutvZ5+ECa4xQTVMUgfF/fI/EE3qNRXUs77PCpBpmIhzMCIAtlQlEVpPw4oq/222qRMUOcnq3ZPHrpD4gQUP4f3fr/7pptK/WwvdxxFMCZuCdpMJ+c4NCvDuPWIM9FHEtA2ttxB4JJ3xUwaME6C7Gua2ksSTNHY4XpuztRUmgq7EHAuZOLqd5WxEWxknBsBkclF0Uxj6AXjMxt00Tfx+QjWv7vnJf5/blSyz8NPlOjUHuDsxCuatmA0zThLyBeo3TM5mIW9V3ov/r8nIz9w0n0aLnqpR9JTF518e6yUpSgHiX3OSaEwriNAcXYLorCfMt2Ah8QwJ1b1HCCJxcXA==',
             'IB_FEEDBACK' => 'http://localhost:8080/omnipay/banklink/',
             'IB_LANG' => 'LAT'
         ), $response->getData());
@@ -103,7 +103,7 @@ class GatewayTest extends GatewayTestCase
         $postData = array(
             'IB_SND_ID' => 'SEBUB',
             'IB_SERVICE' => '0003',
-            'IB_VERSION' => '001',
+            'IB_VERSION' => '002',
             'IB_PAYMENT_ID' => 'UB0000000000015',
             'IB_AMOUNT' => '10.00',
             'IB_CURR' => 'EUR',
@@ -115,7 +115,7 @@ class GatewayTest extends GatewayTestCase
             'IB_PAYMENT_DESC' => 'Payment for order 1231223',
             'IB_PAYMENT_DATE' => '10.03.2019',
             'IB_PAYMENT_TIME' => '21:12:34',
-            'IB_CRC' => 'oTNCjRUlI/Lvt0K3Rf2ANvwBrnJrQ15RXNlQ3uw2Q54m/G+stNmP83/fuACHzKDr9QVcIA3aPNdpzIO2NZ8aTL83a3bCW/RY3GX73ufZZ1yrxjuxOT5xBIH/Rv+BMTOi1XrsGBLFDyFI19ZdGS5kzRvdW7jBrRa2wIm9jIIURJTeWAyujho+aqMf/dxQhcIcNHyErpZBy3FHfAAt2KiUL/tuayoBzt75FZh3BMaDE8jEx/NblvSNKhkBL9WkPZcSLwVEZZ1oRF7A8v4lLRxvuvxEeFZo8UV5e7sgQGkQLHbnVhOmbgr59AwaSQfnP3CSzONHDw0S6IzVwQEjr+7N7w==',
+            'IB_CRC' => 'qoDpJb33oBXO0uhO5rtewR9Qpk1iXzSVokB3uaUJzJhIXh7GhLC+lG0Rbxltv2A4UDmTaG1T5xlvAsBFSVh5Yd36XNZsLQjTdCUcNXR1QZSbwLipQ/KsyU2KOLycBNzHtKl34ToMRsYLuo9dyw06KB5a3QMbeDxF399o92DZInQMzMAiBz1oKyj8A/8kw4xwlrdPs/E/vpIXB/GaCfSISTu3MrQBTbS7uGbWhgvJw4wN5o54idaSOIaighZBn4Ek2ise8vQfuxqOYx2YlHjZOl+Gx+nhzS14eZVbnZ0RxYUveFct8FOgHA+vjm7VmUHhZvSzBH4IzCHilH79Osk6rQ==',
             'IB_LANG' => 'LAT',
             'IB_FROM_SERVER' => 'Y',
         );
@@ -139,7 +139,7 @@ class GatewayTest extends GatewayTestCase
         $getData = array(
             'IB_SND_ID' => 'SEBUB',
             'IB_SERVICE' => '0003',
-            'IB_VERSION' => '001',
+            'IB_VERSION' => '002',
             'IB_PAYMENT_ID' => 'UB0000000000015',
             'IB_AMOUNT' => '10.00',
             'IB_CURR' => 'EUR',
@@ -151,7 +151,7 @@ class GatewayTest extends GatewayTestCase
             'IB_PAYMENT_DESC' => 'Payment for order 1231223',
             'IB_PAYMENT_DATE' => '10.03.2019',
             'IB_PAYMENT_TIME' => '21:12:34',
-            'IB_CRC' => 'oTNCjRUlI/Lvt0K3Rf2ANvwBrnJrQ15RXNlQ3uw2Q54m/G+stNmP83/fuACHzKDr9QVcIA3aPNdpzIO2NZ8aTL83a3bCW/RY3GX73ufZZ1yrxjuxOT5xBIH/Rv+BMTOi1XrsGBLFDyFI19ZdGS5kzRvdW7jBrRa2wIm9jIIURJTeWAyujho+aqMf/dxQhcIcNHyErpZBy3FHfAAt2KiUL/tuayoBzt75FZh3BMaDE8jEx/NblvSNKhkBL9WkPZcSLwVEZZ1oRF7A8v4lLRxvuvxEeFZo8UV5e7sgQGkQLHbnVhOmbgr59AwaSQfnP3CSzONHDw0S6IzVwQEjr+7N7w==',
+            'IB_CRC' => 'qoDpJb33oBXO0uhO5rtewR9Qpk1iXzSVokB3uaUJzJhIXh7GhLC+lG0Rbxltv2A4UDmTaG1T5xlvAsBFSVh5Yd36XNZsLQjTdCUcNXR1QZSbwLipQ/KsyU2KOLycBNzHtKl34ToMRsYLuo9dyw06KB5a3QMbeDxF399o92DZInQMzMAiBz1oKyj8A/8kw4xwlrdPs/E/vpIXB/GaCfSISTu3MrQBTbS7uGbWhgvJw4wN5o54idaSOIaighZBn4Ek2ise8vQfuxqOYx2YlHjZOl+Gx+nhzS14eZVbnZ0RxYUveFct8FOgHA+vjm7VmUHhZvSzBH4IzCHilH79Osk6rQ==',
             'IB_LANG' => 'LAT',
             'IB_FROM_SERVER' => 'Y',
         );
@@ -174,13 +174,13 @@ class GatewayTest extends GatewayTestCase
         $postData = array(
             'IB_SND_ID' => 'SEBUB',
             'IB_SERVICE' => '0004',
-            'IB_VERSION' => '001',
+            'IB_VERSION' => '002',
             'IB_REC_ID' => 'MERCHANT1',
             'IB_PAYMENT_ID' => 'UB0000000000015',
             'IB_PAYMENT_DESC' => 'Payment for order 1231223',
             'IB_FROM_SERVER' => 'Y',
             'IB_STATUS' => 'ACCOMPLISHED',
-            'IB_CRC' => 'OVFY5JD6Oj767KVBMHCGgc1KTkUu1U24WVECsAeHsVay0w899odO5qvF7fBHdJNcwvKg6/OgD54pUfzjuM0bFzWc5qMEoAdtSqKV/SNRLZLb4z1rkGPvqcUWoY5vnAPlZOruwoIzLCQpoigqPZ56jyNMHvv9t38JAKVzUfpBs6DawXsgsKaMyvUIbaBttBi6rZUkvN2JBihx1bLLqz78HmR48Tp8d9bnI3qAozpDERNLczwdEqFqXMWNn/C0u8xqi7ZsAHxLeOz2F10oGkIhQX/SRuf/G2SRH82PgtpvFOQSo3/gsviY5VASvxfHK76JNnlYAIP2QDhdrOe4DiQbhQ==',
+            'IB_CRC' => 'p9XLVkv07Ly75kSeNnXW5hA+/4lQ3QhNAvwloyWi5l9jyhV+5h/GbYrNexId9AqTYjxt0M3PgxAoADRvqiCPyspoLyx4uka1hyWOX9Hrb61u6vPpLQP07T7L60lzbVvQEAetGPrfI9Qpd7qm0Dk+DKR1up3wTTJLk7NRuDjzgM5ciAfpqvdkgx1H+FX6HPj9QX1Fyen8OhPpsBqVGv1e0xGYA5NoRb+qkedsBOpNK7fWMKLdu4dhUV1d6qUb7f+6OJqIMAgNp8mkbHdZha3F/lCvUw43ZlSB/tUK1O6habVfMbPxV01tmifVeA96M3aKIrVFyBuJafxiipme6yY8yA==',
             'IB_LANG' => 'LAT',
         );
 
@@ -202,13 +202,13 @@ class GatewayTest extends GatewayTestCase
         $postData = array(
             'IB_SND_ID' => 'SEBUB',
             'IB_SERVICE' => '0004',
-            'IB_VERSION' => '001',
+            'IB_VERSION' => '002',
             'IB_REC_ID' => 'MERCHANT1',
             'IB_PAYMENT_ID' => 'UB0000000000015',
             'IB_PAYMENT_DESC' => 'Payment for order 1231223',
             'IB_FROM_SERVER' => 'N',
             'IB_STATUS' => 'CANCELLED',
-            'IB_CRC' => 'qAEgqIRVUMnr5EmSJV3LILayEGF/7cU4c2ZvDD8y9OK4RufUnF3XahxHZzGmSzYlRTEiHXiNRnv+JAq3ygj5xlOaGrF7+eCIY45SzcmT+TQVZxFdOHrFIv6rfI9HNpEoNT/r/0sER8xvIR2/n6TSRvWy/Q/BPtm+8tVztK61OLdjXOVbOH4KzpaZAwsP1mqaMtOx89O3EV3Dla/Z+BNKJqWs++FJcERcANNSUKlXxeoqT+elVmB1uG7G3UJB6x5dd03V/fYUY+aK4A4+vjHm4Dzcnwi6W1GwvF9U646obOJ2ge1uhed6QJbYI8a9Igz4iLetNQfXNAxsulEA22nkkw==',
+            'IB_CRC' => 'vRM1Pv3rSEfxcwszWZtSQB6cJHaGUbpYZYtn5BPfbPtukMdVUXT6TCVrzBn9mRl2K2RiJ4hUIFnTXhtDOEl/vonRyag/j5LT6E1xtLT2jdXRbErohTb3nhafZV4T48bXr7sI7aKKFpiAHiTebE+2KWRvlxMLbc95ZhAvl4WDnv1JvJpo+DisgkyFUMrsHT3LNL+Vwn+QhOSYvXRVqmgJl7bGGBCHAQo35SL452deFPcvj7B3auWYkW0UBe6g+LHdPzIiiGj8x9gACwGCIE/it5YTn7dO/tiqFVkDq0htZrV/LdtR9R5dbYa09fD2gAMHN20Bb3y5Jjrr+9TEUZeCOQ==',
             'IB_LANG' => 'LAT',
         );
 
@@ -230,7 +230,7 @@ class GatewayTest extends GatewayTestCase
         $postData = array(
             'IB_SND_ID' => 'SEBUB',
             'IB_SERVICE' => '0004',
-            'IB_VERSION' => '001',
+            'IB_VERSION' => '002',
             'IB_REC_ID' => 'MERCHANT1',
             'IB_PAYMENT_ID' => 'UB0000000000015',
             'IB_PAYMENT_DESC' => 'Payment for order 1231223',
@@ -267,7 +267,7 @@ class GatewayTest extends GatewayTestCase
     {
         $postData = array(
             'IB_SND_ID' => 'SEBUB',
-            'IB_VERSION' => '001',
+            'IB_VERSION' => '002',
             'IB_PAYMENT_ID' => 'UB0000000000015',
             'IB_AMOUNT' => '10.00',
             'IB_CURR' => 'EUR',
