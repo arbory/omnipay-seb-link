@@ -17,7 +17,7 @@ class PurchaseRequest extends AbstractRequest
         $data = [
             'IB_SND_ID' => $this->getMerchantId(), // Client Agreement ID – issued by the Bank. Constant
             'IB_SERVICE' => '0002', // Request message type. Constant 0002
-            'IB_VERSION' => '001', // ID of digital signature algorithm. Constant 001
+            'IB_VERSION' => '002', // ID of digital signature algorithm. Constant 002
             'IB_AMOUNT' => $this->getAmount(), // Payment amount
             'IB_CURR' => $this->getCurrency(), // ISO 4217 format (LVL/EUR, etc.)
             'IB_NAME' => $this->getMerchantName(), // Merchant name  (in this case: SIA Company)
